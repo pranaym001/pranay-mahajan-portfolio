@@ -1,0 +1,25 @@
+{
+  "name": "pranay-mahajan-portfolio",
+  "version": "1.0.0",
+  "description": "Interactive Portfolio for Pranay Mahajan - AI & Machine Learning Engineer",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "portfolio",
+    "ai",
+    "machine-learning",
+    "computer-vision",
+    "developer",
+    "pranay-mahajan"
+  ],
+  "author": "Pranay Mahajan <pranaymahajan871@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}
