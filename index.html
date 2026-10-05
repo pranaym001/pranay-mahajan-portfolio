@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Pranay Mahajan - AI & Machine Learning Engineer, Published Researcher, and Software Developer specializing in Computer Vision, Python, CloudOps, and Web Development.">
+    <meta name="keywords" content="Pranay Mahajan, AI Engineer, Machine Learning, Computer Vision, OpenCV, MediaPipe, Python, AWS, Full Stack Developer, PhishNet, GestureTune">
+    <meta name="author" content="Pranay Mahajan">
+    <title>Pranay Mahajan | AI & Machine Learning Engineer | Portfolio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="pranay_img.jpg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="dark">
+    <!-- Neural Network Particle Canvas Background -->
+    <canvas id="neuralCanvas"></canvas>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    </div>
+
+    <!-- Quick Status Toast Notification Container -->
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar-wrapper">
+        <nav class="navbar" id="navbar">
+            <a href="#hero" class="nav-brand">
+                <div class="brand-avatar-mini">
+                    <img src="pranay_img.jpg" alt="Pranay Mahajan" class="mini-avatar">
+                </div>
+                <div class="brand-info">
+                    <span class="brand-name">Pranay Mahajan</span>
+                    <span class="brand-badge"><i class="fas fa-brain"></i> AI / ML</span>
+                </div>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" class="nav-link"><i class="fas fa-user-astronaut"></i> About</a></li>
+                <li><a href="#skills" class="nav-link"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="#projects" class="nav-link"><i class="fas fa-laptop-code"></i> Projects</a></li>
+                <li><a href="#live-demos" class="nav-link"><i class="fas fa-microchip"></i> Live Demos</a></li>
+                <li><a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="#education" class="nav-link"><i class="fas fa-graduation-cap"></i> Education</a></li>
+                <li><a href="#contact" class="nav-link"><i class="fas fa-paper-plane"></i> Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Sound FX Toggle -->
+                <button class="icon-btn sound-toggle" id="soundToggle" title="Toggle UI Sound Effects" aria-label="Toggle Sound Effects">
+                    <i class="fas fa-volume-mute" id="soundIcon"></i>
+                </button>
+
+                <!-- Theme Toggle -->
+                <button class="icon-btn theme-toggle" id="themeToggle" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+                    <i class="fas fa-sun light-icon"></i>
+                    <i class="fas fa-moon dark-icon"></i>
+                </button>
+
+                <!-- GitHub Direct Redirection -->
+                <a href="https://github.com/pranaym001" target="_blank" rel="noopener noreferrer" class="github-nav-btn" title="View GitHub Profile">
+                    <i class="fab fa-github"></i>
+                    <span class="btn-text">GitHub</span>
+                    <span class="pulse-dot"></span>
+                </a>
+
+                <!-- Mobile Hamburger Menu Button -->
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <!-- Live Status Pill -->
+                    <div class="hero-status-pill">
+                        <span class="status-indicator"></span>
+                        <span class="status-text">Available for AI/ML & Engineering Roles</span>
+                        <span class="location-badge"><i class="fas fa-map-marker-alt"></i> Mumbai, IN</span>
+                    </div>
+
+                    <h1 class="hero-heading">
+                        Hi, I'm <span class="gradient-text">Pranay Mahajan</span>
+                    </h1>
+
+                    <div class="hero-role-wrapper">
+                        <span class="role-prefix">I specialize in </span>
+                        <span class="typewriter-text" id="typewriter"></span>
+                        <span class="cursor">|</span>
+                    </div>
+
+                    <p class="hero-bio">
+                        Engineering graduate in <strong>Artificial Intelligence & Machine Learning</strong> with hands-on experience building and shipping user-facing products end-to-end — from scientific research and data-driven validation to cloud deployment and real-time inference.
+                    </p>
+
+                    <!-- Real-Time Metrics Ribbon -->
+                    <div class="hero-metrics-bar">
+                        <div class="metric-item">
+                            <span class="metric-val" id="metricAccuracy">92%+</span>
+                            <span class="metric-label">PhishNet ML Accuracy</span>
+                        </div>
+                        <div class="metric-separator"></div>
+                        <div class="metric-item">
+                            <span class="metric-val" id="metricLatency">&lt;80ms</span>
+                            <span class="metric-label">Gesture CV Latency</span>
+                        </div>
+                        <div class="metric-separator"></div>
+                        <div class="metric-item">
+                            <span class="metric-val">10k+</span>
+                            <span class="metric-label">URLs Dataset Tested</span>
+                        </div>
+                        <div class="metric-separator"></div>
+                        <div class="metric-item">
+                            <span class="metric-val">1st Prize</span>
+                            <span class="metric-label">Project Competition</span>
+                        </div>
+                    </div>
+
+                    <!-- Call To Actions -->
+                    <div class="hero-cta-group">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-layer-group"></i> Explore Projects
+                        </a>
+                        <a href="#live-demos" class="btn btn-secondary">
+                            <i class="fas fa-bolt"></i> Interactive Demos
+                        </a>
+                        <a href="https://github.com/pranaym001" target="_blank" rel="noopener noreferrer" class="btn btn-github">
+                            <i class="fab fa-github"></i> github.com/pranaym001
+                        </a>
+                        <button class="btn btn-outline" id="quickTerminalBtn">
+                            <i class="fas fa-terminal"></i> Terminal CLI
+                        </button>
+                    </div>
+
+                    <!-- Social / Direct Contact Channels -->
+                    <div class="hero-quick-links">
+                        <a href="https://linkedin.com/in/pranaymahajan103" target="_blank" rel="noopener noreferrer" class="quick-chip" title="LinkedIn Profile">
+                            <i class="fab fa-linkedin"></i> linkedin.com/in/pranaymahajan103
+                        </a>
+                        <a href="mailto:pranaymahajan871@gmail.com" class="quick-chip" title="Send Email">
+                            <i class="fas fa-envelope"></i> pranaymahajan871@gmail.com
+                        </a>
+                        <button class="quick-chip copy-chip" id="copyPhoneHeroBtn" data-copy="+918691966021" title="Copy Phone Number">
+                            <i class="fas fa-phone-alt"></i> +91 8691966021 <i class="fas fa-copy ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hero Visual & Avatar Frame -->
+                <div class="hero-visual">
+                    <div class="profile-card-3d" id="profileCard3D">
+                        <div class="profile-glow-ring"></div>
+                        <div class="profile-image-container">
+                            <img src="pranay_img.jpg" alt="Pranay Mahajan" class="profile-photo" id="profilePhoto">
+                            <div class="profile-overlay-info">
+                                <span class="profile-tag"><i class="fas fa-code-branch"></i> B.E. AI & ML</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Tech Orbit Badges -->
+                        <div class="orbit-badge badge-1">
+                            <i class="fab fa-python"></i>
+                            <span>Python ML</span>
+                        </div>
+                        <div class="orbit-badge badge-2">
+                            <i class="fas fa-eye"></i>
+                            <span>OpenCV & CV</span>
+                        </div>
+                        <div class="orbit-badge badge-3">
+                            <i class="fab fa-aws"></i>
+                            <span>AWS & Cloud</span>
+                        </div>
+                        <div class="orbit-badge badge-4">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>I3PSG '26 Paper</span>
+                        </div>
+
+                        <!-- Live Clock Pill -->
+                        <div class="live-clock-card">
+                            <div class="clock-icon"><i class="fas fa-clock"></i></div>
+                            <div class="clock-data">
+                                <span class="clock-label">Local Time (IST)</span>
+                                <span class="clock-time" id="liveISTClock">--:--:--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <a href="#about" class="scroll-down-indicator" aria-label="Scroll to about section">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+                <span class="scroll-arrow"><i class="fas fa-chevron-down"></i></span>
+            </a>
+        </section>
+
+        <!-- Interactive Terminal / Console Widget Section -->
+        <section class="terminal-section" id="terminalSection">
+            <div class="container">
+                <div class="terminal-wrapper">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="terminal-title">
+                            <i class="fas fa-terminal"></i> pranay@portfolio-terminal:~$ (Interactive CLI)
+                        </div>
+                        <div class="terminal-actions">
+                            <button class="terminal-btn-sm" id="termHelpBtn">help</button>
+                            <button class="terminal-btn-sm" id="termClearBtn">clear</button>
+                        </div>
+                    </div>
+                    <div class="terminal-body" id="terminalBody">
+                        <div class="terminal-output" id="terminalOutput">
+                            <div class="term-line welcome-line">⚡ Welcome to Pranay Mahajan's Interactive Portfolio Shell! Type commands or click shortcuts below.</div>
+                            <div class="term-line hint-line">💡 Available: <span class="highlight">help</span>, <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">experience</span>, <span class="highlight">research</span>, <span class="highlight">certs</span>, <span class="highlight">github</span>, <span class="highlight">contact</span>, <span class="highlight">clear</span></div>
+                        </div>
+                        <div class="terminal-input-row">
+                            <span class="term-prompt">visitor@pranay:~$</span>
+                            <input type="text" class="term-input" id="termInput" placeholder="Type a command (e.g. 'skills', 'projects', 'github')..." autocomplete="off" spellcheck="false">
+                            <button class="term-send-btn" id="termSendBtn"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="terminal-quick-actions">
+                        <span class="quick-title">Quick commands:</span>
+                        <button class="cmd-pill" data-cmd="skills">skills</button>
+                        <button class="cmd-pill" data-cmd="projects">projects</button>
+                        <button class="cmd-pill" data-cmd="research">research</button>
+                        <button class="cmd-pill" data-cmd="experience">experience</button>
+                        <button class="cmd-pill" data-cmd="github">github</button>
+                        <button class="cmd-pill" data-cmd="contact">contact</button>
+                        <button class="cmd-pill special" data-cmd="sudo hire">sudo hire</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="section about-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-subtitle"><i class="fas fa-user-astronaut"></i> Background & Vision</span>
+                    <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+                    <p class="section-lead">A builder with scientific rigor, passion for computer vision, machine learning, and scalable systems.</p>
+                </div>
+
+                <div class="about-grid">
+                    <!-- Bio Narrative -->
+                    <div class="about-card main-bio-card">
+                        <div class="bio-header">
+                            <div class="bio-icon"><i class="fas fa-laptop-code"></i></div>
+                            <div>
+                                <h3 class="bio-headline">Engineering Graduate (AI & Machine Learning)</h3>
+                                <p class="bio-sub">Shivajirao S. Jondhale College of Engineering (CGPA 7.63/10) | Mumbai, India</p>
+                            </div>
+                        </div>
+
+                        <div class="bio-text">
+                            <p>
+                                I am an AI and Machine Learning graduate with hands-on experience building and shipping user-facing products end-to-end — from academic research and data-driven algorithmic validation through web engineering and production deployment.
+                            </p>
+                            <p>
+                                My primary focus sits at the intersection of <strong>Machine Learning, Computer Vision, and Real-Time Software Systems</strong>. I built <strong>PhishNet</strong>, achieving 92%+ accuracy across 10,000+ labeled URLs (published in <em>I3PSG 2026</em>), and <strong>Gesture Tune</strong>, a 30 FPS sub-80ms real-time hand gesture recognition system powered by MediaPipe and OpenCV that won 1st Prize in college-level project competition.
+                            </p>
+                            <p>
+                                I bring a builder's perspective, cross-functional collaboration experience, and technical fluency in Python, Java, C++, and Modern Web technologies to drive product discovery, rigorous requirements, and agile delivery.
+                            </p>
+                        </div>
+
+                        <div class="about-quick-specs">
+                            <div class="spec-badge">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>B.E. AI & ML (2023-2026)</span>
+                            </div>
+                            <div class="spec-badge">
+                                <i class="fas fa-diploma"></i>
+                                <span>Diploma in IT (78.88%)</span>
+                            </div>
+                            <div class="spec-badge">
+                                <i class="fas fa-book-open"></i>
+                                <span>Published Author (I3PSG 2026)</span>
+                            </div>
+                            <div class="spec-badge">
+                                <i class="fas fa-trophy"></i>
+                                <span>1st Prize Competition Winner</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Highlights & Contact Matrix -->
+                    <div class="about-side-stack">
+                        <!-- Direct Credentials Card -->
+                        <div class="about-card specs-card">
+                            <h4 class="card-inner-title"><i class="fas fa-id-card"></i> Contact Information</h4>
+                            <ul class="specs-list">
+                                <li>
+                                    <span class="spec-label"><i class="fas fa-envelope"></i> Email:</span>
+                                    <span class="spec-value">
+                                        <a href="mailto:pranaymahajan871@gmail.com">pranaymahajan871@gmail.com</a>
+                                        <button class="copy-btn-inline" data-copy="pranaymahajan871@gmail.com" title="Copy Email"><i class="fas fa-copy"></i></button>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="spec-label"><i class="fas fa-phone-alt"></i> Phone:</span>
+                                    <span class="spec-value">
+                                        <a href="tel:+918691966021">+91 8691966021</a>
+                                        <button class="copy-btn-inline" data-copy="+918691966021" title="Copy Phone"><i class="fas fa-copy"></i></button>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="spec-label"><i class="fas fa-map-marker-alt"></i> Location:</span>
+                                    <span class="spec-value">Mumbai, Maharashtra, India</span>
+                                </li>
+                                <li>
+                                    <span class="spec-label"><i class="fab fa-github"></i> GitHub:</span>
+                                    <span class="spec-value">
+                                        <a href="https://github.com/pranaym001" target="_blank" rel="noopener noreferrer">pranaym001 <i class="fas fa-external-link-alt"></i></a>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="spec-label"><i class="fab fa-linkedin"></i> LinkedIn:</span>
+                                    <span class="spec-value">
+                                        <a href="https://linkedin.com/in/pranaymahajan103" target="_blank" rel="noopener noreferrer">pranaymahajan103 <i class="fas fa-external-link-alt"></i></a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Core Pillars -->
+                        <div class="about-card pillars-card">
+                            <h4 class="card-inner-title"><i class="fas fa-bullseye"></i> Engineering Pillars</h4>
+                            <div class="pillar-items">
+                                <div class="pillar-box">
+                                    <i class="fas fa-brain pillar-icon"></i>
+                                    <div>
+                                        <strong>Applied AI & ML</strong>
+                                        <p>Random Forest, Feature Engineering, Latency & Precision Optimization.</p>
+                                    </div>
+                                </div>
+                                <div class="pillar-box">
+                                    <i class="fas fa-camera-retro pillar-icon"></i>
+                                    <div>
+                                        <strong>Computer Vision</strong>
+                                        <p>Real-time OpenCV, MediaPipe 21 landmarks, gesture control & video streams.</p>
+                                    </div>
+                                </div>
+                                <div class="pillar-box">
+                                    <i class="fas fa-cloud pillar-icon"></i>
+                                    <div>
+                                        <strong>CloudOps & Engineering</strong>
+                                        <p>AWS, Azure AI Foundry, Docker, CI/CD, ETL validation, & full-stack web.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section id="skills" class="section skills-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-subtitle"><i class="fas fa-code"></i> Technical Fluency</span>
+                    <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+                    <p class="section-lead">Mastery in core programming languages, machine learning pipelines, cloud platforms, and data engineering.</p>
+                </div>
+
+                <!-- Skill Categories Grid -->
+                <div class="skills-grid">
+                    <!-- Programming Languages -->
+                    <div class="skill-category-card">
+                        <div class="cat-header">
+                            <div class="cat-icon"><i class="fas fa-terminal"></i></div>
+                            <h3>Programming Languages</h3>
+                        </div>
+                        <p class="cat-desc">Core languages used for algorithms, systems, backend engineering, and web applications.</p>
+                        <div class="skill-tags">
+                            <div class="skill-tag-item featured"><i class="fab fa-python"></i> Python <span class="lvl">Advanced</span></div>
+                            <div class="skill-tag-item"><i class="fab fa-java"></i> Java <span class="lvl">Proficient</span></div>
+                            <div class="skill-tag-item"><i class="fas fa-code"></i> C++ <span class="lvl">Proficient</span></div>
+                            <div class="skill-tag-item"><i class="fas fa-file-code"></i> C <span class="lvl">Fundamental</span></div>
+                            <div class="skill-tag-item"><i class="fab fa-js"></i> JavaScript (ES6+) <span class="lvl">Proficient</span></div>
+                            <div class="skill-tag-item"><i class="fab fa-html5"></i> HTML5 / CSS3 <span class="lvl">Advanced</span></div>
+                            <div class="skill-tag-item"><i class="fab fa-php"></i> PHP <span class="lvl">Backend</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Machine Learning & Computer Vision -->
+                    <div class="skill-category-card highlight-card">
+                        <div class="cat-header">
+                            <div class="cat-icon"><i class="fas fa-network-wired"></i></div>
+                            <h3>Machine Learning & CV</h3>
+                        </div>
+                        <p class="cat-desc">Model development, vision pipelines, heuristic feature engineering, and inference optimization.</p>
+                        <div class="skill-tags">
+                            <div class="skill-tag-item featured"><i class="fas fa-brain"></i> ML Fundamentals</div>
+                            <div class="skill-tag-item featured"><i class="fas fa-tree"></i> Random Forest</div>
+                            <div class="skill-tag-item featured"><i class="fas fa-camera"></i> OpenCV</div>
+                            <div class="skill-tag-item featured"><i class="fas fa-hand-paper"></i> MediaPipe (21 Landmarks)</div>
+                            <div class="skill-tag-item"><i class="fas fa-chart-line"></i> Model Validation</div>
+                            <div class="skill-tag-item"><i class="fas fa-shield-virus"></i> Phishing Detection Models</div>
+                        </div>
+                    </div>
+
+                    <!-- Data Engineering -->
+                    <div class="skill-category-card">
+                        <div class="cat-header">
+                            <div class="cat-icon"><i class="fas fa-database"></i></div>
+                            <h3>Data Engineering</h3>
+                        </div>
+                        <p class="cat-desc">End-to-end data pipelines, heuristic extraction, data cleaning, and dataset labeling.</p>
+                        <div class="skill-tags">
+                            <div class="skill-tag-item"><i class="fas fa-filter"></i> ETL Pipelines</div>
+                            <div class="skill-tag-item"><i class="fas fa-cogs"></i> Feature Engineering</div>
+                            <div class="skill-tag-item"><i class="fas fa-table"></i> Data Extraction & Validation</div>
+                            <div class="skill-tag-item"><i class="fas fa-check-double"></i> Dataset Labeling (10k+ URLs)</div>
+                            <div class="skill-tag-item"><i class="fas fa-project-diagram"></i> NetworkX Graphs</div>
+                        </div>
+                    </div>
+
+                    <!-- Databases -->
+                    <div class="skill-category-card">
+                        <div class="cat-header">
+                            <div class="cat-icon"><i class="fas fa-server"></i></div>
+                            <h3>Databases & Storage</h3>
+                        </div>
+                        <p class="cat-desc">Relational and document storage, schema optimization, transaction handling, and querying.</p>
+                        <div class="skill-tags">
+                            <div class="skill-tag-item featured"><i class="fas fa-database"></i> MySQL</div>
+                            <div class="skill-tag-item"><i class="fas fa-code-branch"></i> SQL Optimization</div>
+                            <div class="skill-tag-item featured"><i class="fas fa-leaf"></i> MongoDB</div>
+                            <div class="skill-tag-item"><i class="fas fa-hdd"></i> SQLite</div>
+                        </div>
+                    </div>
+
+                    <!-- Cloud, DevOps & Tools -->
+                    <div class="skill-category-card">
+                        <div class="cat-header">
+                            <div class="cat-icon"><i class="fas fa-cloud"></i></div>
+                            <h3>Cloud & DevOps Tools</h3>
+                        </div>
+                        <p class="cat-desc">Cloud infrastructure, containerization, CI/CD automated deployment, and version control.</p>
+                        <div class="skill-tags">
+                            <div class="skill-tag-item featured"><i class="fab fa-aws"></i> AWS (Certified SA)</div>
+                            <div class="skill-tag-item"><i class="fab fa-microsoft"></i> Azure AI Foundry</div>
+                            <div class="skill-tag-item"><i class="fab fa-docker"></i> Docker</div>
+                            <div class="skill-tag-item"><i class="fas fa-sync-alt"></i> CI / CD</div>
+                            <div class="skill-tag-item featured"><i class="fab fa-git-alt"></i> Git / GitHub</div>
+                            <div class="skill-tag-item"><i class="fab fa-chrome"></i> Manifest V3 (Extensions)</div>
+                        </div>
+                    </div>
+
+                    <!-- Business Intelligence & Analytics -->
+                    <div class="skill-category-card">
+                        <div class="cat-header">
+                            <div class="cat-icon"><i class="fas fa-chart-pie"></i></div>
+                            <h3>Analytics & Visualization</h3>
+                        </div>
+                        <p class="cat-desc">Translating raw data into interactive dashboards, KPI reporting, and executive business insights.</p>
+                        <div class="skill-tags">
+                            <div class="skill-tag-item featured"><i class="fas fa-chart-bar"></i> Power BI</div>
+                            <div class="skill-tag-item"><i class="fas fa-chart-area"></i> Tableau</div>
+                            <div class="skill-tag-item"><i class="fas fa-magic"></i> GenAI Analytics (Tata Group)</div>
+                            <div class="skill-tag-item"><i class="fas fa-search-dollar"></i> Algorithmic Backtesting</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Real-Time Tech Demos Section -->
+        <section id="live-demos" class="section demos-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-subtitle"><i class="fas fa-flask"></i> Hands-On Innovation</span>
+                    <h2 class="section-title">Interactive <span class="gradient-text">Real-Time Demos</span></h2>
+                    <p class="section-lead">Experience live simulated instances of the machine learning and computer vision architectures built in research and projects.</p>
+                </div>
+
+                <div class="demos-container">
+                    <!-- Tab Switcher for Demos -->
+                    <div class="demo-tabs">
+                        <button class="demo-tab-btn active" data-demo="phishnet">
+                            <i class="fas fa-shield-alt"></i> PhishNet ML Inspector (92%+ Accuracy)
+                        </button>
+                        <button class="demo-tab-btn" data-demo="gesture">
+                            <i class="fas fa-hand-paper"></i> GestureTune 21-Landmark Vision (<80ms)
+                        </button>
+                    </div>
+
+                    <!-- Demo 1: PhishNet ML Inspector -->
+                    <div class="demo-panel active" id="demo-phishnet">
+                        <div class="demo-card">
+                            <div class="demo-header">
+                                <div class="demo-badge-wrap">
+                                    <span class="badge badge-purple"><i class="fas fa-book"></i> Published in I3PSG 2026</span>
+                                    <span class="badge badge-cyan"><i class="fas fa-robot"></i> Random Forest Classifier</span>
+                                </div>
+                                <h3>PhishNet: Real-Time ML Phishing Detection Pipeline</h3>
+                                <p>Simulates the exact heuristic extraction and Random Forest probability model developed for the Chrome Manifest V3 extension, tested on 10,000+ labeled URLs.</p>
+                            </div>
+
+                            <div class="inspector-interface">
+                                <div class="inspector-input-group">
+                                    <div class="url-input-wrap">
+                                        <i class="fas fa-globe"></i>
+                                        <input type="text" id="demoUrlInput" placeholder="Enter URL or select a preset below..." value="https://github.com/pranaym001">
+                                    </div>
+                                    <button class="btn btn-primary" id="analyzeUrlBtn">
+                                        <i class="fas fa-search"></i> Inspect with ML Model
+                                    </button>
+                                </div>
+
+                                <div class="preset-urls">
+                                    <span class="preset-label">Test Sample URLs:</span>
+                                    <button class="preset-chip safe" data-url="https://github.com/pranaym001">
+                                        <i class="fas fa-check-circle"></i> GitHub (Safe)
+                                    </button>
+                                    <button class="preset-chip safe" data-url="https://scholar.google.com/citations">
+                                        <i class="fas fa-check-circle"></i> Google Scholar (Safe)
+                                    </button>
+                                    <button class="preset-chip phishing" data-url="http://paypal-security-verification-update.xyz/login.php?session=secure">
+                                        <i class="fas fa-exclamation-triangle"></i> Fake PayPal (Phishing)
+                                    </button>
+                                    <button class="preset-chip phishing" data-url="http://192.168.1.100/account-blocked/verify-bank-credentials/">
+                                        <i class="fas fa-exclamation-triangle"></i> IP-based Bank Fraud (Phishing)
+                                    </button>
+                                </div>
+
+                                <!-- Real-Time Inspection Results Area -->
+                                <div class="analysis-results-box" id="analysisResultsBox">
+                                    <div class="verdict-header">
+                                        <div class="verdict-badge" id="verdictBadge">
+                                            <i class="fas fa-shield-alt"></i>
+                                            <span id="verdictText">Awaiting URL Inspection</span>
+                                        </div>
+                                        <div class="confidence-meter">
+                                            <div class="confidence-label">Model Confidence: <strong id="confidenceScore">--%</strong></div>
+                                            <div class="meter-bar-track">
+                                                <div class="meter-bar-fill" id="meterBarFill" style="width: 0%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="features-breakdown">
+                                        <h4><i class="fas fa-cogs"></i> Extracted Real-Time Heuristic Features</h4>
+                                        <div class="features-grid" id="featuresGrid">
+                                            <div class="feature-item">
+                                                <span class="f-label">URL Length</span>
+                                                <span class="f-val" id="featLength">-- chars</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <span class="f-label">IP Address in Domain</span>
+                                                <span class="f-val" id="featIp">None</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <span class="f-label">Token Entropy</span>
+                                                <span class="f-val" id="featEntropy">-- bits</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <span class="f-label">Subdomain Depth</span>
+                                                <span class="f-val" id="featSubdomains">--</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <span class="f-label">Suspicious Keyword Flags</span>
+                                                <span class="f-val" id="featKeywords">0 detected</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <span class="f-label">HTTPS Security Protocol</span>
+                                                <span class="f-val" id="featHttps">--</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="journal-reference-bar">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <span>Publication Citation: <strong>I3PSG 2026</strong> - "PhishNet: Real-Time Machine Learning Based Phishing Detection Web Extension with Random Forest Classifier"</span>
+                                        <a href="https://github.com/pranaym001" target="_blank" rel="noopener noreferrer" class="journal-link">
+                                            View Source Code <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Demo 2: GestureTune Landmark Simulator -->
+                    <div class="demo-panel" id="demo-gesture">
+                        <div class="demo-card">
+                            <div class="demo-header">
+                                <div class="demo-badge-wrap">
+                                    <span class="badge badge-gold"><i class="fas fa-trophy"></i> 1st Prize Project Competition</span>
+                                    <span class="badge badge-cyan"><i class="fas fa-bolt"></i> MediaPipe 21 Landmarks | &lt;80ms</span>
+                                </div>
+                                <h3>GestureTune: Real-Time 30 FPS Gesture Control Engine</h3>
+                                <p>Interactive simulator of the MediaPipe hand-tracking landmark pipeline and OpenCV gesture-recognition state machine developed for human-computer interaction.</p>
+                            </div>
+
+                            <div class="gesture-simulator-grid">
+                                <div class="gesture-canvas-wrapper">
+                                    <canvas id="gestureCanvas" width="480" height="360"></canvas>
+                                    <div class="canvas-telemetry">
+                                        <span class="fps-pill"><i class="fas fa-tachometer-alt"></i> <span id="telemetryFps">30.0</span> FPS</span>
+                                        <span class="latency-pill"><i class="fas fa-stopwatch"></i> Latency: <span id="telemetryLatency">72ms</span></span>
+                                        <span class="landmarks-pill"><i class="fas fa-draw-polygon"></i> 21 Hand Landmarks</span>
+                                    </div>
+                                    <div class="gesture-canvas-hint">
+                                        Move mouse over canvas to move hand & test gestures!
+                                    </div>
+                                </div>
+
+                                <div class="gesture-controls-sidebar">
+                                    <div class="current-gesture-box">
+                                        <span class="c-label">Recognized Gesture State</span>
+                                        <div class="c-gesture" id="recognizedGestureName">
+                                            <i class="fas fa-hand-paper"></i> Palm Open
+                                        </div>
+                                        <div class="c-action" id="recognizedActionText">Action: Ready / Idle Mode</div>
+                                    </div>
+
+                                    <div class="gesture-preset-buttons">
+                                        <span class="sub-label">Simulate Target Gestures:</span>
+                                        <div class="g-btn-grid">
+                                            <button class="g-btn active" data-gesture="palm">
+                                                <i class="fas fa-hand-paper"></i> Open Palm (Idle)
+                                            </button>
+                                            <button class="g-btn" data-gesture="pinch">
+                                                <i class="fas fa-hand-holding"></i> Pinch (Volume Adjust)
+                                            </button>
+                                            <button class="g-btn" data-gesture="peace">
+                                                <i class="fas fa-hand-peace"></i> Peace Sign (Next Track)
+                                            </button>
+                                            <button class="g-btn" data-gesture="fist">
+                                                <i class="fas fa-hand-rock"></i> Fist (Play/Pause)
+                                            </button>
+                                            <button class="g-btn" data-gesture="point">
+                                                <i class="fas fa-hand-pointer"></i> Point (Brightness Adjust)
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Interactive Simulated Audio / Brightness Slider Feedback -->
+                                    <div class="simulated-device-state">
+                                        <div class="state-slider-row">
+                                            <span class="s-label"><i class="fas fa-volume-up"></i> Volume:</span>
+                                            <div class="s-track">
+                                                <div class="s-fill" id="volumeSimFill" style="width: 75%;"></div>
+                                            </div>
+                                            <span class="s-val" id="volumeSimVal">75%</span>
+                                        </div>
+                                        <div class="state-slider-row">
+                                            <span class="s-label"><i class="fas fa-sun"></i> Brightness:</span>
+                                            <div class="s-track">
+                                                <div class="s-fill" id="brightnessSimFill" style="width: 85%;"></div>
+                                            </div>
+                                            <span class="s-val" id="brightnessSimVal">85%</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="repo-redirect-box">
+                                        <a href="https://github.com/pranaym001/GestureTune" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-block">
+                                            <i class="fab fa-github"></i> View GestureTune on GitHub <i class="fas fa-arrow-right ml-1"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Showcase Section -->
+        <section id="projects" class="section projects-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-subtitle"><i class="fas fa-layer-group"></i> Portfolio Works</span>
+                    <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+                    <p class="section-lead">Explore research, machine learning models, computer vision systems, and cloud infrastructure with direct GitHub repositories.</p>
+                </div>
+
+                <!-- GitHub API Live Stats Banner -->
+                <div class="github-stats-banner">
+                    <div class="gh-stat-item">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <span class="gh-num" id="ghReposCount">11</span>
+                            <span class="gh-lbl">Public Repositories</span>
+                        </div>
+                    </div>
+                    <div class="gh-stat-item">
+                        <i class="fas fa-code-branch"></i>
+                        <div>
+                            <span class="gh-num">Active</span>
+                            <span class="gh-lbl">GitHub Status</span>
+                        </div>
+                    </div>
+                    <div class="gh-stat-item">
+                        <i class="fas fa-sync-alt" id="ghSyncIcon"></i>
+                        <div>
+                            <span class="gh-num" id="ghLastUpdate">Real-Time Sync</span>
+                            <span class="gh-lbl">github.com/pranaym001</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/pranaym001" target="_blank" rel="noopener noreferrer" class="gh-banner-btn">
+                        <span>Follow on GitHub</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+
+                <!-- Project Category Filters & Search -->
+                <div class="project-filter-bar">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Projects</button>
+                        <button class="filter-btn" data-filter="ai-ml">AI & ML</button>
+                        <button class="filter-btn" data-filter="cv">Computer Vision</button>
+                        <button class="filter-btn" data-filter="cloud">CloudOps & Python</button>
+                        <button class="filter-btn" data-filter="web">Web & Full-Stack</button>
+                    </div>
+
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="projectSearchInput" placeholder="Filter projects by technology...">
+                    </div>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Project 1: PhishNet (Featured Flagship) -->
+                    <div class="project-card" data-category="ai-ml" data-tags="python machine learning random forest manifest v3 research chrome extension">
+                        <div class="project-card-header">
+                            <div class="card-badge-row">
+                                <span class="p-badge p-flagship"><i class="fas fa-award"></i> Flagship ML</span>
+                                <span class="p-badge p-paper"><i class="fas fa-file-alt"></i> I3PSG 2026</span>
+                            </div>
+                            <span class="p-year">2025 – 2026</span>
+                        </div>
+                        <div class="project-card-body">
+                            <h3 class="project-name">
+                                PhishNet – ML-Based Phishing Detection Extension
+                            </h3>
+                            <p class="project-desc">
+                                Built and tested a real-time phishing-detection browser extension achieving <strong>92%+ accuracy</strong> on a labeled dataset of <strong>10,000+ URLs</strong>. Engineered heuristic features and deployed an optimized Random Forest classifier integrated with Chrome Manifest V3 APIs. Published findings in <em>I3PSG 2026</em>, a peer-reviewed international journal.
+                            </p>
+                            <div class="project-highlights">
+                                <span><i class="fas fa-check"></i> 92%+ Test Accuracy</span>
+                                <span><i class="fas fa-check"></i> 10,000+ Labeled URLs</span>
+                                <span><i class="fas fa-check"></i> Manifest V3 Real-Time Intercept</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">Machine Learning</span>
+                                <span class="tech-pill">Random Forest</span>
+                                <span class="tech-pill">Manifest V3</span>
+                                <span class="tech-pill">ETL</span>
+                            </div>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="#live-demos" class="project-btn demo-btn">
+                                <i class="fas fa-play"></i> Live ML Demo
+                            </a>
+                            <a href="https://github.com/pranaym001" target="_blank" rel="noopener noreferrer" class="project-btn github-btn" title="View Source on GitHub">
+                                <i class="fab fa-github"></i> Repository <i class="fas fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: GestureTune (Flagship CV) -->
+                    <div class="project-card" data-category="cv" data-tags="python opencv mediapipe computer vision gesture control real-time">
+                        <div class="project-card-header">
+                            <div class="card-badge-row">
+                                <span class="p-badge p-award"><i class="fas fa-trophy"></i> 1st Prize Winner</span>
+                                <span class="p-badge p-vision"><i class="fas fa-eye"></i> Computer Vision</span>
+                            </div>
+                            <span class="p-year">2024 – 2025</span>
+                        </div>
+                        <div class="project-card-body">
+                            <h3 class="project-name">
+                                Gesture Tune – Real-Time Gesture Control System
+                            </h3>
+                            <p class="project-desc">
+                                Engineered a real-time gesture-recognition pipeline processing <strong>30 FPS video</strong> with <strong>sub-80ms latency</strong> and <strong>95%+ accuracy</strong>. Integrated MediaPipe hand-tracking (21 landmarks) with OpenCV to map micro-gestures to system volume and brightness. Won 1st Prize at a college-level project competition.
+                            </p>
+                            <div class="project-highlights">
+                                <span><i class="fas fa-check"></i> Sub-80ms Latency</span>
+                                <span><i class="fas fa-check"></i> 30 FPS Live Stream</span>
+                                <span><i class="fas fa-check"></i> 21 Landmark Tracking</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">OpenCV</span>
+                                <span class="tech-pill">MediaPipe</span>
+                                <span class="tech-pill">NumPy</span>
+                                <span class="tech-pill">Real-Time CV</span>
+                            </div>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="#live-demos" class="project-btn demo-btn">
+                                <i class="fas fa-play"></i> Live CV Demo
+                            </a>
+                            <a href="https://github.com/pranaym001/GestureTune" target="_blank" rel="noopener noreferrer" class="project-btn github-btn" title="View GestureTune on GitHub">
+                                <i class="fab fa-github"></i> GestureTune <i class="fas fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Aero_Drift (CloudOps Engine) -->
+                    <div class="project-card" data-category="cloud" data-tags="aws python boto3 networkx asyncio sqlite cloudops docker devops">
+                        <div class="project-card-header">
+                            <div class="card-badge-row">
+                                <span class="p-badge p-cloud"><i class="fab fa-aws"></i> CloudOps Engine</span>
+                            </div>
+                            <span class="p-year">Cloud & DevOps</span>
+                        </div>
+                        <div class="project-card-body">
+                            <h3 class="project-name">
+                                AeroDrift – AWS CloudOps Infrastructure Drift Engine
+                            </h3>
+                            <p class="project-desc">
+                                Python-based CloudOps engine that monitors AWS infrastructure for configuration drift and security anomalies. Utilizes NetworkX graph topologies, boto3 AWS SDK, asyncio, Python AST, SQLite, and Rich CLI to detect cloud risks, automate remediation, and audit cloud-state changes.
+                            </p>
+                            <div class="project-highlights">
+                                <span><i class="fas fa-check"></i> NetworkX Topology Graphs</span>
+                                <span><i class="fas fa-check"></i> Boto3 AWS API Automation</span>
+                                <span><i class="fas fa-check"></i> Async Drift Remediation</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">AWS</span>
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">Boto3</span>
+                                <span class="tech-pill">NetworkX</span>
+                                <span class="tech-pill">Asyncio</span>
+                                <span class="tech-pill">SQLite</span>
+                            </div>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/pranaym001/Aero_Drift" target="_blank" rel="noopener noreferrer" class="project-btn github-btn full-w" title="View Aero_Drift on GitHub">
+                                <i class="fab fa-github"></i> pranaym001/Aero_Drift <i class="fas fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Twitch-Chat-Sentiment-Analysis -->
+                    <div class="project-card" data-category="ai-ml" data-tags="nlp sentiment analysis go python real-time websockets">
+                        <div class="project-card-header">
+                            <div class="card-badge-row">
+                                <span class="p-badge p-nlp"><i class="fas fa-comments"></i> Real-Time NLP</span>
+                            </div>
+                            <span class="p-year">Streaming NLP</span>
+                        </div>
+                        <div class="project-card-body">
+                            <h3 class="project-name">
+                                Twitch Chat Streaming Sentiment Analysis
+                            </h3>
+                            <p class="project-desc">
+                                High-throughput real-time sentiment analysis engine processing streaming Twitch chat messages. Built using concurrent pipelines to classify chat emotions, calculate live hype meters, and surface community sentiment trends during live events.
+                            </p>
+                            <div class="project-highlights">
+                                <span><i class="fas fa-check"></i> High-Throughput Stream</span>
+                                <span><i class="fas fa-check"></i> Live Sentiment Scoring</span>
+                                <span><i class="fas fa-check"></i> Concurrent Pipeline</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">Go</span>
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">NLP</span>
+                                <span class="tech-pill">WebSockets</span>
+                                <span class="tech-pill">Concurrency</span>
+                            </div>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/pranaym001/Twitch-Chat-Sentiment-Analysis" target="_blank" rel="noopener noreferrer" class="project-btn github-btn full-w" title="View Twitch Chat Sentiment on GitHub">
+                                <i class="fab fa-github"></i> Twitch Sentiment Repo <i class="fas fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: Binance Futures Trading Bot -->
+                    <div class="project-card" data-category="cloud" data-tags="python algorithmic trading binance api finance bots automated">
+                        <div class="project-card-header">
+                            <div class="card-badge-row">
+                                <span class="p-badge p-finance"><i class="fas fa-chart-line"></i> Algo Trading</span>
+                            </div>
+                            <span class="p-year">Quantitative Bot</span>
+                        </div>
+                        <div class="project-card-body">
+                            <h3 class="project-name">
+                                Automated Futures Trading Bot (Binance Testnet)
+                            </h3>
+                            <p class="project-desc">
+                                Algorithmic trading execution bot connected to Binance Futures Testnet API. Implements automated order execution, technical indicator signals, risk calculation parameters, position monitoring, and backtesting validation.
+                            </p>
+                            <div class="project-highlights">
+                                <span><i class="fas fa-check"></i> Binance REST & WebSocket API</span>
+                                <span><i class="fas fa-check"></i> Automated Risk Sizing</span>
+                                <span><i class="fas fa-check"></i> Technical Indicators</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">Binance API</span>
+                                <span class="tech-pill">Quant Algorithms</span>
+                                <span class="tech-pill">Pandas</span>
+                            </div>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/pranaym001/trading-bot-on-binance-future-testnet" target="_blank" rel="noopener noreferrer" class="project-btn github-btn full-w" title="View Trading Bot on GitHub">
+                                <i class="fab fa-github"></i> Trading Bot Repo <i class="fas fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 6: Hand Gesture Brightness & Volume Control -->
+                    <div class="project-card" data-category="cv" data-tags="python opencv pycaw computer vision hand gestures">
+                        <div class="project-card-header">
+                            <div class="card-badge-row">
+                                <span class="p-badge p-vision"><i class="fas fa-sliders-h"></i> HCI Vision</span>
+                            </div>
+                            <span class="p-year">Computer Vision</span>
+                        </div>
+                        <div class="project-card-body">
+                            <h3 class="project-name">
+                                Hand-Gesture Brightness & Volume Control
+                            </h3>
+                            <p class="project-desc">
+                                Touchless Human-Computer Interaction system using OpenCV and Python. Maps finger tip distances directly to system audio endpoints and screen luminance for seamless contactless device control.
+                            </p>
+                            <div class="project-highlights">
+                                <span><i class="fas fa-check"></i> Euclidean Distance Calculation</span>
+                                <span><i class="fas fa-check"></i> Audio Core System Interfacing</span>
+                                <span><i class="fas fa-check"></i> Low Resource Footprint</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">OpenCV</span>
+                                <span class="tech-pill">PyAutoGUI</span>
+                                <span class="tech-pill">HCI</span>
+                            </div>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/pranaym001/Brightness-and-volume-control-on-hand-gesture-using-python" target="_blank" rel="noopener noreferrer" class="project-btn github-btn full-w" title="View Hand Gesture Control on GitHub">
+                                <i class="fab fa-github"></i> Gesture Control Repo <i class="fas fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 7: Face Emotion Recognition -->
+                    <div class="project-card" data-category="cv" data-tags="python opencv deep learning face emotion recognition jupyter notebook">
+                        <div class="project-card-header">
+                            <div class="card-badge-row">
+                                <span class="p-badge p-ai"><i class="fas fa-smile"></i> Emotion AI</span>
+                            </div>
+                            <span class="p-year">Deep Learning</span>
+                        </div>
+                        <div class="project-card-body">
+                            <h3 class="project-name">
+                                Real-Time Face Emotion Recognition
+                            </h3>
+                            <p class="project-desc">
+                                Facial emotion classification model analyzing video frames in real-time to detect emotional states (Happy, Sad, Neutral, Surprise, Anger). Integrates facial boundary detection with feature extraction models.
+                            </p>
+                            <div class="project-highlights">
+                                <span><i class="fas fa-check"></i> Real-time Facial Landmarking</span>
+                                <span><i class="fas fa-check"></i> Multi-class Emotion Classification</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">OpenCV</span>
+                                <span class="tech-pill">Machine Learning</span>
+                                <span class="tech-pill">Jupyter</span>
+                            </div>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/pranaym001/face-emotion-recognition-using-python" target="_blank" rel="noopener noreferrer" class="project-btn github-btn full-w" title="View Face Emotion Repo on GitHub">
+                                <i class="fab fa-github"></i> Emotion Recognition Repo <i class="fas fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 8: Fullstack Website Assessment -->
+                    <div class="project-card" data-category="web" data-tags="javascript html css web development fullstack assessment rating">
+                        <div class="project-card-header">
+                            <div class="card-badge-row">
+                                <span class="p-badge p-web"><i class="fas fa-globe"></i> Full-Stack</span>
+                            </div>
+                            <span class="p-year">Web Engineering</span>
+                        </div>
+                        <div class="project-card-body">
+                            <h3 class="project-name">
+                                Interactive Rating Full-Stack Assessment
+                            </h3>
+                            <p class="project-desc">
+                                Responsive interactive web application with dynamic state management, feedback assessment flows, rating computation, and cross-browser responsive UI design.
+                            </p>
+                            <div class="project-highlights">
+                                <span><i class="fas fa-check"></i> Dynamic DOM State</span>
+                                <span><i class="fas fa-check"></i> Cross-browser Compatibility</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">HTML5</span>
+                                <span class="tech-pill">CSS3</span>
+                                <span class="tech-pill">UI/UX</span>
+                            </div>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/pranaym001/rating-fullstack-website-assessment" target="_blank" rel="noopener noreferrer" class="project-btn github-btn full-w" title="View Assessment Repo on GitHub">
+                                <i class="fab fa-github"></i> Assessment Repo <i class="fas fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitHub All Repositories Redirection Banner -->
+                <div class="more-repos-cta">
+                    <p>Want to see more code, algorithms, and experiments?</p>
+                    <a href="https://github.com/pranaym001" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        <i class="fab fa-github"></i> Explore All 11+ Repositories on GitHub <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="section experience-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-subtitle"><i class="fas fa-briefcase"></i> Track Record</span>
+                    <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
+                    <p class="section-lead">Proven history of delivering web applications, optimizing backend architectures, and applying data structures to real-world software.</p>
+                </div>
+
+                <div class="timeline">
+                    <!-- Experience 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="exp-header">
+                                <div class="exp-role-company">
+                                    <h3 class="exp-role">Web Developer Intern</h3>
+                                    <h4 class="exp-company"><i class="fas fa-building"></i> Prodigy Infotech</h4>
+                                </div>
+                                <div class="exp-meta">
+                                    <span class="exp-date"><i class="fas fa-calendar-alt"></i> 08/2024 – 09/2024</span>
+                                    <span class="exp-loc"><i class="fas fa-map-marker-alt"></i> Remote, Mumbai</span>
+                                </div>
+                            </div>
+                            <ul class="exp-bullets">
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Built and deployed an interactive, responsive website using <strong>HTML, CSS, and JavaScript</strong> through the full software development lifecycle — planning, coding, unit testing, and deployment.</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Applied <strong>Data Structures & Algorithms</strong> to write efficient, maintainable, well-tested code within tight project timelines.</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Ensured cross-browser compatibility, modern UI/UX responsiveness, and modular code architecture.</span>
+                                </li>
+                            </ul>
+                            <div class="exp-tags">
+                                <span class="exp-pill">HTML5</span>
+                                <span class="exp-pill">CSS3</span>
+                                <span class="exp-pill">JavaScript ES6+</span>
+                                <span class="exp-pill">Data Structures</span>
+                                <span class="exp-pill">Full Dev Lifecycle</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="exp-header">
+                                <div class="exp-role-company">
+                                    <h3 class="exp-role">Web Developer Intern</h3>
+                                    <h4 class="exp-company"><i class="fas fa-building"></i> PHD Inforcom</h4>
+                                </div>
+                                <div class="exp-meta">
+                                    <span class="exp-date"><i class="fas fa-calendar-alt"></i> 06/2022 – 08/2022</span>
+                                    <span class="exp-loc"><i class="fas fa-map-marker-alt"></i> Dadar, Mumbai</span>
+                                </div>
+                            </div>
+                            <ul class="exp-bullets">
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Engineered and optimized the <strong>PHP backend</strong> of an e-commerce platform, improving page load speed by <strong>20%</strong> and transaction success by <strong>15%</strong>.</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Debugged critical transaction workflows, payment triggers, and maintained accurate relational product databases in cross-functional collaboration with the engineering team.</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Conducted performance audits, query optimizations, and reduced server response latency.</span>
+                                </li>
+                            </ul>
+                            <div class="exp-tags">
+                                <span class="exp-pill">PHP Backend</span>
+                                <span class="exp-pill">MySQL / SQL</span>
+                                <span class="exp-pill">Page Load Speed (+20%)</span>
+                                <span class="exp-pill">Transaction Success (+15%)</span>
+                                <span class="exp-pill">E-Commerce</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education, Certifications & Awards Section -->
+        <section id="education" class="section education-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-subtitle"><i class="fas fa-graduation-cap"></i> Academic & Professional Credentials</span>
+                    <h2 class="section-title">Education, Certifications & <span class="gradient-text">Awards</span></h2>
+                    <p class="section-lead">Rigorous engineering background paired with industry credentials and peer-reviewed published research.</p>
+                </div>
+
+                <div class="credentials-layout">
+                    <!-- Left: Education Column -->
+                    <div class="cred-col">
+                        <h3 class="col-title"><i class="fas fa-university"></i> Formal Education</h3>
+                        
+                        <div class="cred-card edu-card">
+                            <div class="edu-top">
+                                <span class="cred-tag be">Degree</span>
+                                <span class="cred-year"><i class="fas fa-calendar-alt"></i> 2023 – 2026</span>
+                            </div>
+                            <h4 class="edu-degree">B.E. in Artificial Intelligence & Machine Learning</h4>
+                            <p class="edu-institution">Shivajirao S. Jondhale College of Engineering, Dombivli</p>
+                            <div class="edu-grade">
+                                <i class="fas fa-star text-gold"></i>
+                                <span>CGPA: <strong>7.63 / 10</strong></span>
+                            </div>
+                            <p class="edu-desc">Specialized coursework in Machine Learning, Computer Vision, Neural Networks, Advanced Data Structures, Cloud Computing, and Applied AI Systems.</p>
+                        </div>
+
+                        <div class="cred-card edu-card">
+                            <div class="edu-top">
+                                <span class="cred-tag dip">Diploma</span>
+                                <span class="cred-year"><i class="fas fa-calendar-alt"></i> 2020 – 2023</span>
+                            </div>
+                            <h4 class="edu-degree">Diploma in Information Technology</h4>
+                            <p class="edu-institution">Vidyalankar Polytechnic, Wadala, Mumbai</p>
+                            <div class="edu-grade">
+                                <i class="fas fa-chart-line text-cyan"></i>
+                                <span>Aggregate: <strong>78.88%</strong></span>
+                            </div>
+                            <p class="edu-desc">Foundational training in Software Development, Database Management, Object-Oriented Programming (Java, C++), and Network Protocols.</p>
+                        </div>
+
+                        <!-- Awards & Publications Card -->
+                        <div class="awards-box">
+                            <h3 class="col-title"><i class="fas fa-trophy"></i> Awards & Publications</h3>
+                            
+                            <div class="award-item">
+                                <div class="award-icon gold"><i class="fas fa-medal"></i></div>
+                                <div class="award-content">
+                                    <span class="award-date">01/02/2026</span>
+                                    <h4>Published Research: PhishNet – Phishing Detection Web Extension</h4>
+                                    <p class="journal-name"><strong>I3PSG 2026</strong> (Peer-reviewed International Journal)</p>
+                                    <a href="https://github.com/pranaym001" target="_blank" rel="noopener noreferrer" class="paper-link">
+                                        <i class="fas fa-external-link-alt"></i> View Paper & Code Reference
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="award-item">
+                                <div class="award-icon cyan"><i class="fas fa-trophy"></i></div>
+                                <div class="award-content">
+                                    <span class="award-date">01/02/2025</span>
+                                    <h4>1st Prize, College-Level Project Competition (Gesture Tune)</h4>
+                                    <p class="journal-name">Shivajirao S. Jondhale College of Engineering</p>
+                                    <span class="award-detail">Awarded 1st place for real-time 30 FPS MediaPipe computer-vision innovation.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Certifications Column -->
+                    <div class="cred-col">
+                        <h3 class="col-title"><i class="fas fa-certificate"></i> Verified Industry Certifications</h3>
+                        <div class="certs-list">
+                            <!-- Cert 1 -->
+                            <div class="cert-card">
+                                <div class="cert-icon-wrap aws">
+                                    <i class="fab fa-aws"></i>
+                                </div>
+                                <div class="cert-info">
+                                    <div class="cert-meta">
+                                        <span class="issuer">Forage</span>
+                                        <span class="date">Dec 2025</span>
+                                    </div>
+                                    <h4 class="cert-name">AWS Certified Solutions Architect</h4>
+                                    <p class="cert-summary">Cloud architecture design, high-availability VPCs, S3, EC2 scaling, and IAM security simulations.</p>
+                                </div>
+                            </div>
+
+                            <!-- Cert 2 -->
+                            <div class="cert-card">
+                                <div class="cert-icon-wrap tata">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="cert-info">
+                                    <div class="cert-meta">
+                                        <span class="issuer">Tata Group</span>
+                                        <span class="date">Aug 2025</span>
+                                    </div>
+                                    <h4 class="cert-name">GenAI Powered Data Analytics Job Simulation</h4>
+                                    <p class="cert-summary">Practical analytics simulation using generative AI for corporate decision modeling and dataset synthesis.</p>
+                                </div>
+                            </div>
+
+                            <!-- Cert 3 -->
+                            <div class="cert-card">
+                                <div class="cert-icon-wrap azure">
+                                    <i class="fab fa-microsoft"></i>
+                                </div>
+                                <div class="cert-info">
+                                    <div class="cert-meta">
+                                        <span class="issuer">ICT Academy / Microsoft</span>
+                                        <span class="date">Aug 2025</span>
+                                    </div>
+                                    <h4 class="cert-name">Artificial Intelligence (Microsoft Azure AI Foundry)</h4>
+                                    <p class="cert-summary">Azure AI Studio, generative model orchestration, prompt flows, and cloud cognitive services.</p>
+                                </div>
+                            </div>
+
+                            <!-- Cert 4 -->
+                            <div class="cert-card">
+                                <div class="cert-icon-wrap java">
+                                    <i class="fab fa-java"></i>
+                                </div>
+                                <div class="cert-info">
+                                    <div class="cert-meta">
+                                        <span class="issuer">Great Learning</span>
+                                        <span class="date">Apr 2023</span>
+                                    </div>
+                                    <h4 class="cert-name">Data Structures and Algorithms in Java</h4>
+                                    <p class="cert-summary">Rigorous algorithmic problem solving: trees, graphs, sorting, dynamic programming, and complexity analysis.</p>
+                                </div>
+                            </div>
+
+                            <!-- Cert 5 -->
+                            <div class="cert-card">
+                                <div class="cert-icon-wrap python">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div class="cert-info">
+                                    <div class="cert-meta">
+                                        <span class="issuer">LetsUpgrade</span>
+                                        <span class="date">Sep 2023</span>
+                                    </div>
+                                    <h4 class="cert-name">Introduction to Programming Using Python</h4>
+                                    <p class="cert-summary">Core Python fundamentals, functional paradigms, OOP, file I/O, and data processing libraries.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-subtitle"><i class="fas fa-paper-plane"></i> Let's Connect</span>
+                    <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+                    <p class="section-lead">Have a project, role opening, or research opportunity? I'm actively seeking software and AI/ML engineering positions.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Contact Cards & Channels -->
+                    <div class="contact-channels">
+                        <div class="contact-box">
+                            <div class="c-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="c-info">
+                                <span class="c-label">Direct Email</span>
+                                <a href="mailto:pranaymahajan871@gmail.com" class="c-link">pranaymahajan871@gmail.com</a>
+                            </div>
+                            <button class="copy-icon-btn" data-copy="pranaymahajan871@gmail.com" title="Copy Email">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="contact-box">
+                            <div class="c-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="c-info">
+                                <span class="c-label">Phone / WhatsApp</span>
+                                <a href="tel:+918691966021" class="c-link">+91 8691966021</a>
+                            </div>
+                            <button class="copy-icon-btn" data-copy="+918691966021" title="Copy Phone Number">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="contact-box">
+                            <div class="c-icon"><i class="fab fa-github"></i></div>
+                            <div class="c-info">
+                                <span class="c-label">GitHub Profile</span>
+                                <a href="https://github.com/pranaym001" target="_blank" rel="noopener noreferrer" class="c-link">github.com/pranaym001</a>
+                            </div>
+                            <a href="https://github.com/pranaym001" target="_blank" rel="noopener noreferrer" class="external-icon-btn" title="Open GitHub">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+
+                        <div class="contact-box">
+                            <div class="c-icon"><i class="fab fa-linkedin"></i></div>
+                            <div class="c-info">
+                                <span class="c-label">LinkedIn Connection</span>
+                                <a href="https://linkedin.com/in/pranaymahajan103" target="_blank" rel="noopener noreferrer" class="c-link">linkedin.com/in/pranaymahajan103</a>
+                            </div>
+                            <a href="https://linkedin.com/in/pranaymahajan103" target="_blank" rel="noopener noreferrer" class="external-icon-btn" title="Open LinkedIn">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+
+                        <div class="contact-box location-box">
+                            <div class="c-icon"><i class="fas fa-map-marked-alt"></i></div>
+                            <div class="c-info">
+                                <span class="c-label">Current Location</span>
+                                <span class="c-link">Mumbai, Maharashtra, India</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Contact Message Form -->
+                    <div class="contact-form-card">
+                        <h3 class="form-title"><i class="fas fa-paper-plane"></i> Send Me a Message</h3>
+                        <p class="form-desc">Fill out this quick form to generate a direct email dispatch or send a priority message.</p>
+
+                        <form id="contactForm" class="contact-form" novalidate>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contactName">Your Name *</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                                    </div>
+                                    <span class="field-error" id="nameError"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactEmail">Your Email *</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                                    </div>
+                                    <span class="field-error" id="emailError"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactSubject">Subject *</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-tag"></i>
+                                    <input type="text" id="contactSubject" name="subject" placeholder="Project inquiry / Full-time role opportunity" required>
+                                </div>
+                                <span class="field-error" id="subjectError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactMessage">Message *</label>
+                                <div class="input-with-icon textarea-wrap">
+                                    <i class="fas fa-comment-dots"></i>
+                                    <textarea id="contactMessage" name="message" rows="5" placeholder="Hi Pranay, I came across your portfolio and wanted to discuss..." required></textarea>
+                                </div>
+                                <span class="field-error" id="messageError"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block submit-btn" id="submitFormBtn">
+                                <span><i class="fas fa-paper-plane"></i> Send Message</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="pranay_img.jpg" alt="Pranay Mahajan" class="mini-avatar">
+                        <span class="f-name">Pranay Mahajan</span>
+                    </div>
+                    <p class="f-tagline">AI & Machine Learning Engineer | Builder, Researcher, and Developer.</p>
+                </div>
+
+                <div class="footer-nav">
+                    <a href="#hero">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#live-demos">Demos</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#education">Education</a>
+                    <a href="#contact">Contact</a>
+                </div>
+
+                <div class="footer-socials">
+                    <a href="https://github.com/pranaym001" target="_blank" rel="noopener noreferrer" class="social-circle" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/pranaymahajan103" target="_blank" rel="noopener noreferrer" class="social-circle" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:pranaymahajan871@gmail.com" class="social-circle" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="tel:+918691966021" class="social-circle" title="Phone">
+                        <i class="fas fa-phone-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2026</span> Pranay Mahajan. All Rights Reserved.</p>
+                <p class="footer-credit">Built with HTML5, CSS3, & Modern JavaScript &bull; Hosted on GitHub</p>
+                <a href="#hero" class="back-to-top" id="backToTopBtn" aria-label="Scroll back to top">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
