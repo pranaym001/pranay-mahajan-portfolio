@@ -394,15 +394,15 @@
   Redirecting to: <a href="https://github.com/pranaym001" target="_blank" style="color:#00f0ff">https://github.com/pranaym001</a>
   11+ Repositories: GestureTune, Aero_Drift, Twitch-Chat-Sentiment, and more.`,
 
-        contact: `📫 CONTACT DETAILS:
-  • Email: <a href="mailto:pranaymahajan871@gmail.com" style="color:#00f0ff">pranaymahajan871@gmail.com</a>
-  • Phone: <a href="tel:+918691966021" style="color:#00f0ff">+91 8691966021</a>
+        contact: `📫 CONTACT & CHANNELS:
   • LinkedIn: <a href="https://linkedin.com/in/pranaymahajan103" target="_blank" style="color:#00f0ff">linkedin.com/in/pranaymahajan103</a>
-  • Location: Mumbai, Maharashtra, India`,
+  • GitHub: <a href="https://github.com/pranaym001" target="_blank" style="color:#00f0ff">github.com/pranaym001</a>
+  • Location: Mumbai, Maharashtra, India
+  • Open to AI & Machine Learning Opportunities`,
 
         'sudo hire': `🌟 ACCESS GRANTED: Outstanding candidate detected!
   Pranay Mahajan is ready for high-impact AI/ML & Software roles.
-  Let's schedule an interview: <a href="mailto:pranaymahajan871@gmail.com?subject=Interview%20Invitation%20for%20Pranay%20Mahajan" style="color:#10b981;font-weight:bold;">Click here to send an interview invite</a>`
+  Connect directly on LinkedIn: <a href="https://linkedin.com/in/pranaymahajan103" target="_blank" style="color:#10b981;font-weight:bold;">linkedin.com/in/pranaymahajan103</a>`
     };
 
     function appendTerminalLine(content, className = '') {
@@ -1114,16 +1114,14 @@
                 return;
             }
 
-            // Prepare mailto link
-            const subjectEncoded = encodeURIComponent(`[Portfolio Contact] ${contactSubject.value.trim()}`);
-            const bodyEncoded = encodeURIComponent(
-                `Hello Pranay,\n\nName: ${contactName.value.trim()}\nEmail: ${contactEmail.value.trim()}\n\nMessage:\n${contactMessage.value.trim()}`
-            );
-            const mailtoUrl = `mailto:pranaymahajan871@gmail.com?subject=${subjectEncoded}&body=${bodyEncoded}`;
+            // Format contact message and redirect to LinkedIn connect
+            const messagePayload = `Hi Pranay,\nMy Name: ${contactName.value.trim()}\nEmail: ${contactEmail.value.trim()}\nSubject: ${contactSubject.value.trim()}\nMessage: ${contactMessage.value.trim()}`;
+            navigator.clipboard.writeText(messagePayload).catch(() => {});
 
-            window.location.href = mailtoUrl;
-
-            showToast('Opening email client with your message! Thank you for reaching out.', 'success');
+            showToast('Message copied! Opening LinkedIn to connect with Pranay...', 'success');
+            setTimeout(() => {
+                window.open('https://linkedin.com/in/pranaymahajan103', '_blank');
+            }, 1200);
             contactForm.reset();
         });
     }

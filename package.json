@@ -17,7 +17,7 @@
     "developer",
     "pranay-mahajan"
   ],
-  "author": "Pranay Mahajan <pranaymahajan871@gmail.com>",
+  "author": "Pranay Mahajan",
   "license": "MIT",
   "devDependencies": {
     "vite": "^6.0.0"
