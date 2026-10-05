@@ -123,9 +123,10 @@
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
-        const particleCount = 60;
-        const maxDistance = 140;
-        let mouse = { x: null, y: null, radius: 150 };
+        const isMobileScreen = window.innerWidth < 768;
+        const particleCount = isMobileScreen ? 26 : 55;
+        const maxDistance = isMobileScreen ? 95 : 135;
+        let mouse = { x: null, y: null, radius: isMobileScreen ? 90 : 150 };
 
         function resizeCanvas() {
             width = canvas.width = window.innerWidth;
@@ -313,15 +314,25 @@
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = navLinks.classList.toggle('open');
+            hamburger.classList.toggle('active', isOpen);
             playTone(400, 0.05);
         });
 
         navLinks.querySelectorAll('a').forEach(a => {
             a.addEventListener('click', () => {
                 navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
             });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+            }
         });
     }
 
